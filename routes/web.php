@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('template');
+})->name('home');
+Route::resource('product', 'ProductController');
+Route::post('/product/update/{id}', 'ProductController@update')->name('productUpdate');
+Route::resource('customer', 'CustomerController');
+Route::post('/customer/update/{id}', 'CustomerController@update')->name('customerUpdate');
