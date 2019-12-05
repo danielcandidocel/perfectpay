@@ -13,16 +13,16 @@ class StatusSalesTableSeeder extends Seeder
     public function run()
     {
         Status_Sale::create([
-            'name' => 'Vendidos',
+            'name' => 'Vendido',
         ]);
         Status_Sale::create([
-            'name' => 'Cancelados',
+            'name' => 'Cancelado',
         ]);
         Status_Sale::create([
-            'name' => 'Devoluções',
+            'name' => 'Devolvido',
         ]);
         Status_Sale::create([
-            'name' => 'Pendentes',
+            'name' => 'Pendente',
         ]);
     }
 }

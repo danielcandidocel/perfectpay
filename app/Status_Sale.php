@@ -14,6 +14,6 @@ class Status_Sale extends Model
     ];
     
     public function statusSales(){     
-        return $this->hasOne('App\Sale', 'id_status');
+        return $this->hasMany('App\Sale', 'id_status');
     }
 }

@@ -21,8 +21,8 @@
                     <li><a href="{{route('home')}}">Home</a></li>
                     <li><a href="{{route('product.index')}}">Produtos</a></li>
                     <li><a href="{{route('customer.index')}}">Clientes</a></li>
-                    <li><a href="">Vendas</a></li>
-                    <li><a href="">Relatórios</a></li>
+                    <li><a href="{{route('sale.index')}}">Vendas</a></li>
+                    <li><a href="{{route('report')}}">Relatórios</a></li>
                     
                 </ul>
             </div>

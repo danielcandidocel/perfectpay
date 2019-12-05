@@ -8,7 +8,7 @@
 }
 #footer{
     bottom: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;    
 }
 #rodape{
@@ -16,4 +16,10 @@
 }
 #page{
     margin-top:50px
+}
+#home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
 }
