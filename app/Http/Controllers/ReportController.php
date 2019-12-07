@@ -8,8 +8,11 @@ use App\Customer;
 use App\Product;
 use App\Status_Sale;
 
+//Controller para montar relatórios de vendas
 class ReportController extends Controller
 {
+    //Método para Somar a quantidade de venda por status
+    //Resultado enviado para View report
     public function index(){
         $status = Status_sale::all();
         foreach ($status as $key => $value) {
