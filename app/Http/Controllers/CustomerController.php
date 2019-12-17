@@ -41,7 +41,7 @@ class CustomerController extends Controller
            'email' => $request->email,
         ]);
 
-        return view('template');
+        return redirect()->route('customer.index');
     }
 
     public function show(Customer $customer)
@@ -78,7 +78,7 @@ class CustomerController extends Controller
             $customer->save();
         }
 
-        return view('template');
+        return redirect()->route('customer.index');
     }
 
     public function destroy(Customer $customer)

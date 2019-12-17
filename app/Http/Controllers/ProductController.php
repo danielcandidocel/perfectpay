@@ -22,13 +22,17 @@ class ProductController extends Controller
     //Cria um novo Produto, retorna para view template, espera um request
     public function store(Request $request)
     {
-    //Regras do Validate do Laravel
+        //Substituindo ',' por '.'
+        $p = str_replace(".","", $request->price);
+        $request['price'] = str_replace(",",".", $p);
+
+        //Regras do Validate do Laravel
         $regras = [                        
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ];
-    //Mensagens de Retorno do Validade
+        //Mensagens de Retorno do Validade
         $mensagens = [             
             'name.required' => 'O Nome do Produto não pode estar em branco.' ,
             'description.required' => 'A Descrição do Produto não pode estar em branco.' ,
@@ -37,36 +41,39 @@ class ProductController extends Controller
         ];
         $request->validate($regras, $mensagens);
 
-    //Criar novo Produto
+        //Criar novo Produto
         Product::create([
            'name' => $request->name,
            'description' => $request->description,
            'price' => $request->price
         ]);
-
-        return view('template');
+        return redirect()->route('product.index');
     }
 
     public function show(Product $product)
     {
         //
     }
-//Retorna a view editProduct, com formulário para editar o Produto, espera o id do     Produto como parâmetro
+    //Retorna a view editProduct, com formulário para editar o Produto, espera o id do     Produto como parâmetro
     public function edit($id)
     {
         $product = Product::find($id);
         return view('editProduct', compact('product'));
     }
-//Edita um Produto, retorna para view template, espera um request e o id do Produto     como parâmetro
+    //Edita um Produto, retorna para view template, espera um request e o id do Produto     como parâmetro
     public function update(Request $request, $id)
     {
-    //Regras do Validate do Laravel
+        //Substituindo ',' por '.'
+        $p = str_replace(".","", $request->price);
+        $request['price'] = str_replace(",",".", $p);
+
+        //Regras do Validate do Laravel
         $regras = [                        
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ];
-    //Mensagens de Retorno do Validade
+        //Mensagens de Retorno do Validade
         $mensagens = [             
             'name.required' => 'O Nome do Produto não pode estar em branco.' ,
             'description.required' => 'A Descrição do Produto não pode estar em branco.' ,
@@ -75,7 +82,7 @@ class ProductController extends Controller
         ];
         $request->validate($regras, $mensagens);
 
-            //Pesquisa o Id do Produto e Atualiza se encontrado
+        //Pesquisa o Id do Produto e Atualiza se encontrado
         $product = Product::find($id);
         if($product){
             $product->name = $request->name;
@@ -83,8 +90,7 @@ class ProductController extends Controller
             $product->price = $request->price;
             $product->save();
         }
-
-        return view('template');
+        return redirect()->route('product.index');
     }
 
     public function destroy(Product $product)

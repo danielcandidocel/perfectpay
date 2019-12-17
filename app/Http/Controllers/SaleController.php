@@ -54,7 +54,7 @@ class SaleController extends Controller
            'id_status' => 4
         ]);
 
-        return view('template');
+        return redirect()->route('sale.index');
     }
 
     public function show(sale $sale)
@@ -91,7 +91,7 @@ class SaleController extends Controller
             $sale->save();
         }
 
-        return view('template');
+        return redirect()->route('sale.index');
     }
 
     public function destroy(sale $sale)
